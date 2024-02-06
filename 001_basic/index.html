@@ -17,6 +17,9 @@
         margin: 0;
         padding: 0;
       }
+      img {
+        width: 200px;
+      }
       li {
         list-style-type: none;
         background: #fff;
@@ -25,6 +28,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+      }
+      li.fav {
+        background-color: #ff9ad2;
+        color: #fff;
       }
     </style>
   </head>
@@ -35,7 +42,11 @@
        -->
       <div v-if="showBooks">
         <ul>
-          <li v-for="item in books" :class="{fav: item.isFav}">
+          <li
+            v-for="item in filteredBooks"
+            :class="{fav: item.isFav}"
+            @click="toggleFav(item)"
+          >
             <img :src="item.img" :alt="item.title" />
             <h3>{{item.title}}}</h3>
             <p>{{item.author}}</p>

@@ -29,9 +29,13 @@ const app = Vue.createApp({
     togglesShowBooks() {
       this.showBooks = !this.showBooks;
     },
-    handleEvent(e, data) {
-      this.x = e.offsetX;
-      this.y = e.offsetY;
+    toggleFav(book) {
+      book.isFav = !book.isFav;
+    },
+  },
+  computed: {
+    filteredBooks() {
+      return this.books.filter((book) => book.isFav);
     },
   },
 });
